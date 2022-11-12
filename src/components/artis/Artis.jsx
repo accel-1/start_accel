@@ -1,6 +1,7 @@
 import React , {useState} from 'react';
-import PropTypes from 'prop-types';
-import { FreeMode, Thumbs, Scrollbar, A11y , EffectCoverflow , Autoplay   } from 'swiper';
+//import PropTypes from 'prop-types';
+//Scrollbar, A11y , EffectCoverflow
+import { FreeMode, Thumbs, Autoplay   } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/scss';

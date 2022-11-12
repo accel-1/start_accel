@@ -49,8 +49,9 @@ const [Quantity, setQuantity] = useState(1);
 const {contract:erc721}=useContract(choice,"nft-collection")
 const {contract:erc1155}=useContract( choice,"edition")
 
+
      
-    const metadata_erc1155 = {
+const metadata_erc1155 = {
 
         name: Name,
         title: Title,
