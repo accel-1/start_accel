@@ -1,7 +1,6 @@
 import  React from 'react';
 import PropTypes from 'prop-types';
 import PageTitle from '../components/pagetitle/PageTitle';
-
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { createRoutesFromChildren, Link } from 'react-router-dom';
 import icon1 from '../assets/images/svg/metamask.svg'
@@ -17,7 +16,7 @@ import ico3 from '../assets/images/icon/ethe.svg'
 import avt from '../assets/images/author/author1.png'
 import {useAddress,useDisconnect,useContract,useSDK} from "@thirdweb-dev/react"
 import {useState} from "react"
-import axios  from 'axios';
+
 
 Create.propTypes = {
     
@@ -28,6 +27,7 @@ function Create(props) {
     const address=useAddress()
     //const disconnect=useDisconnect()
     const sdk=useSDK()
+    console.log("im sdk",sdk)
     const [createcollection,createCol]=useState(false)
     const [collectionName,setCollectionName]=useState("")
     const [collectionType,setCollectionType]=useState("")
@@ -76,31 +76,32 @@ const metadata_erc1155 = {
 
 
 
-async function CreateCollection1(e){
+async function CreateCollection1(){
 
-e.preventDefault()
+//e.preventDefault()
  
  try{
  
  
- const contractAddress = await sdk?.deployer.deployNFTCollection({
+ const contractAddress = await    sdk.deployer.deployNFTCollection({
   name:collectionName,
   primary_sale_recipient:address,
  
  
  });
+ console.log(contractAddress)
  
 
  var data = JSON.stringify({
     
-        "owner":address,
-        "collectionAddress":contractAddress,
-        "collectionName": collectionName,
-        "collectionType":collectionType
+        owner:address,
+        collectionAddress:contractAddress,
+        collectionName: collectionName,
+        collectionType:collectionType
       
  });
              
- let request=await fetch("./netlify/functions/savecreator",{
+ let request=await fetch("/.netlify/functions/savecreator",{
     method:"post",
     headers:{
         "content-type":"application/json"
@@ -110,9 +111,9 @@ e.preventDefault()
 let response=await request.json()
 
 if(response.status==200){
-    alert("done")
+    alert("collection saved")
 }
- 
+
  }
  catch(e){
   console.log(e)
@@ -123,8 +124,8 @@ if(response.status==200){
 
 
 
- async function CreateCollection2(e){
-    e.preventDefault()
+ async function CreateCollection2(){
+    //e.preventDefault()
    
    try{
    
@@ -136,7 +137,7 @@ if(response.status==200){
 
    });
    
-   let request=await  fetch (`/api/savecreatordata`,{
+   let request=await  fetch (`/.netlify/functions/savecreator`,{
     method:"post",
    headers:{
    "content-type":"application/json",
@@ -154,8 +155,9 @@ if(response.status==200){
    
    let response=await request.json()
    if(response.status==true){
-    //setStatus(true)
+    alert("clollection saved")
    }
+   
    
    }
    catch(e){
@@ -228,12 +230,12 @@ createcollection==true?
                   collectionType=="erc721"
                   ?
                   <>
-                  <button onClick={(e)=>CreateCollection1(e)}>create 721 collection</button>
+                  <button onClick={()=>CreateCollection1()}>create 721 collection</button>
                   
                   </>
                   :
                   <>
-                  <button onClick={(e)=>CreateCollection2(e)}>create 1155 collection</button>
+                  <button onClick={()=>CreateCollection2()}>create 1155 collection</button>
                   </>
                 
                 }
