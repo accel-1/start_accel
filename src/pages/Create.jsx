@@ -148,7 +148,7 @@ if(response.created==true){
     address:`${address}`,
     collectionname:`${collectionName}`,
     collectionaddress:`${contractAddress}`,
-    collectionType:`${collectionType}`
+    collectiontype:`${collectionType}`
    
    })
    })
