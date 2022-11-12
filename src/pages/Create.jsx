@@ -110,7 +110,7 @@ async function CreateCollection1(){
  })
 let response=await request.json()
 
-if(response.status==200){
+if(response.created==true){
     alert("collection saved")
 }
 
@@ -154,7 +154,7 @@ if(response.status==200){
    })
    
    let response=await request.json()
-   if(response.status==true){
+   if(response.created==true){
     alert("clollection saved")
    }
    

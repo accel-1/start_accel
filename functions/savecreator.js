@@ -18,15 +18,18 @@ exports.handler = async (event, context) => {
   const db=await client.connect();
   const collection=db.db('nft').collection("creator")
   collection.insertOne({
-   owner:owner,
-   collectionName:collectionname,
-   collectionAddress:collectionaddress,
-   collectionType:collectiontype
+
+  "owner":owner,
+  "collectionName":collectionname,
+  "collectionAddress":collectionaddress,
+  "collectionType":collectiontype
   
   })
 
   return {
     statusCode: 200,
-    body:"done",
+    body:JSON.stringify({
+      created:true
+    }),
   };
 };
