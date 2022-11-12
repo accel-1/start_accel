@@ -4,14 +4,15 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import './App.scss'
 import ScrollToTop from "./ScrollToTop";
-import {ThirdwebProvider} from "@thirdweb-dev/react"
+import { ChainId, ThirdwebProvider } from '@thirdweb-dev/react';
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
+const activeChainId = ChainId.Mumbai;
 root.render(
     <React.Fragment>
         <BrowserRouter>
             <ScrollToTop />
-            <ThirdwebProvider>
+            <ThirdwebProvider desiredChainId={activeChainId} >
             <App />
             </ThirdwebProvider>
             
