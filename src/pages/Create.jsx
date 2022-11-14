@@ -44,6 +44,7 @@ const [Quantity, setQuantity] = useState(1);
    preview: "/img.jpg",
    img: ""
  });
+ const [collectionfrommongo,setCollectionfromMongo]=useState('')
 
 
 const {contract:erc721}=useContract(choice,"nft-collection")
@@ -73,7 +74,21 @@ const metadata_erc1155 = {
 
  /////////////////////////////////////////////////////////////////////////////////////////
 
+async function getUserCollections(){
+let request=await fetch(`https://us-west-2.aws.data.mongodb-api.com/app/application-0-ukvyw/endpoint/getcreatorcollections?address=${address}`,{
+    method:"get",
+    headers:{
+        "content-type":"application/json"
+    }
+})
 
+let response=await request.json()
+setCollectionfromMongo(response)
+//console.log(response)
+}
+
+getUserCollections()
+console.log(collectionfrommongo)
 
 
 async function CreateCollection1(){
@@ -95,13 +110,13 @@ async function CreateCollection1(){
  var data = JSON.stringify({
     
         owner:address,
-        collectionAddress:contractAddress,
-        collectionName: collectionName,
-        collectionType:collectionType
+        collectionaddress:contractAddress,
+        collectioname: collectionName,
+        collectiontype:collectionType
       
  });
              
- let request=await fetch("/.netlify/functions/savecreator",{
+ let request=await fetch("https://us-west-2.aws.data.mongodb-api.com/app/application-0-ukvyw/endpoint/savecreator",{
     method:"post",
     headers:{
         "content-type":"application/json"
@@ -169,8 +184,8 @@ if(response.created==true){
 
 
 
-   async function ERC721(e) {
-    e.preventDefault()
+   async function ERC721() {
+    //e.preventDefault()
      const t =await erc721?.mintTo(address,metadata_erc721);
      
      //const tx = await contract?.mintTo(address, metadata_erc1155);
@@ -301,6 +316,13 @@ createcollection==true?
 
                                     <TabPanel>
                                     <div className="tab-create-item">
+                                                 
+        <label>Your Collection</label>
+         <input type="text" onChange={(e)=>setChoice(e.target.value)} placeholder="collection address"></input>
+          
+                                       
+                  
+        
                                                 <h6 className="title">Upload An Item</h6>
                                                 <p className="sub">But Each One Takes A Different Approach And Makes Different Tradeoffs.</p>
 
@@ -340,6 +362,12 @@ createcollection==true?
 
                                 <TabPanel>
                                 <div className="tab-create-collection">
+
+                                                                             
+        
+        <label>Your Collection</label>
+         <input type="text" onChange={(e)=>setChoice(e.target.value)} placeholder="collection address"></input>
+          
                                 <h6 className="title">Upload An Item</h6>
                                                 <p className="sub">But Each One Takes A Different Approach And Makes Different Tradeoffs.</p>
 

@@ -9,31 +9,7 @@ const menus = [
                 sub: 'Home 01',
                 links: '/'
             },
-            {
-                id: 2,
-                sub: 'Home 02',
-                links: '/home-v2'
-            },
-            {
-                id: 3,
-                sub: 'Home 03',
-                links: '/home-v3'
-            },
-            {
-                id: 4,
-                sub: 'Home 04',
-                links: '/home-v4'
-            },
-            {
-                id: 5,
-                sub: 'Home 05',
-                links: '/home-v5'
-            },
-            {
-                id: 6,
-                sub: 'Home 06',
-                links: '/home-v6'
-            },
+            
         ]
     },
     {
@@ -46,21 +22,7 @@ const menus = [
                 sub: 'Explore v1',
                 links: '/explore-v1'
             },
-            {
-                id: 2,
-                sub: 'Explore v2',
-                links: '/explore-v2'
-            },
-            {
-                id: 3,
-                sub: 'Explore v3',
-                links: '/explore-v3'
-            },
-            {
-                id: 4,
-                sub: 'Explore v4',
-                links: '/explore-v4'
-            },
+           
             {
                 id: 5,
                 sub: 'Collection',
@@ -118,16 +80,7 @@ const menus = [
                 sub: 'Connect Wallet',
                 links: '/wallet'
             },
-            {
-                id: 6,
-                sub: 'Login',
-                links: '/login'
-            },
-            {
-                id: 7,
-                sub: 'Sign Up',
-                links: '/signup'
-            },
+            
         ],
     },
     {

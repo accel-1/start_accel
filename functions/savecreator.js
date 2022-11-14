@@ -27,7 +27,7 @@ exports.handler = async (event, context) => {
   "collectionType":collectiontype
   
   })
-
+await db.close()
   return {
     statusCode: 200,
     body:JSON.stringify({
